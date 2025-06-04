@@ -1,19 +1,35 @@
 import { Component } from '@angular/core';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatTableModule } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
-
-
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-purchase',
   standalone: true,
-   imports: [MatCheckboxModule,MatTableModule,FormsModule,MatCardModule],
+  imports: [
+    ReactiveFormsModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+  ],
   templateUrl: './purchase.component.html',
   styleUrl: './purchase.component.css'
 })
 export class PurchaseComponent {
+  employeeForm: FormGroup;
 
-   
-
+  constructor(private fb: FormBuilder) {
+    this.employeeForm = this.fb.group({
+      name: [''],
+      email: [''],
+      position: [''],
+      department: ['']
+    });
+  }
+  onSubmit(): void {
+    console.log(this.employeeForm.value);
+  }
 }

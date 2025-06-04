@@ -1,0 +1,38 @@
+ .employee-card {
+     padding: 16px;
+     /* max-width: 600px;
+     margin: 24px auto; */
+ }
+
+ .form-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 16px;
+ }
+
+
+ button {
+     margin-top: 24px;
+ }
+    
+
+ /* Responsive: single column on small screens */
+ @media (max-width: 600px) {
+     .form-grid {
+         grid-template-columns: 1fr;
+     }
+ }
+ 
+ @media (max-width: 600px) {
+  .employee-card {
+    padding: 12px;
+  }
+
+  .form-field .mat-input-element {
+    font-size: 0.9rem;
+  }
+
+  button {
+    width: 100%; /* make button full width on mobile */
+  }
+}

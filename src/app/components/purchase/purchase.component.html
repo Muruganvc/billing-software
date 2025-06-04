@@ -1,1 +1,29 @@
-<h2>Under development</h2>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <mat-card class="employee-card">
+    <h2>Employee Details</h2>
+    
+    <div class="form-grid">
+      <mat-form-field class="form-field" density="compact" class="form-field">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+      </mat-form-field>
+
+      <mat-form-field class="form-field" density="compact" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field class="form-field" density="compact" class="form-field">
+        <mat-label>Position</mat-label>
+        <input matInput formControlName="position" />
+      </mat-form-field>
+
+      <mat-form-field class="form-field" density="compact" class="form-field">
+        <mat-label>Department</mat-label>
+        <input matInput formControlName="department" />
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </mat-card>
+</form>
