@@ -1,0 +1,92 @@
+<div>
+    <div class="row">
+        <div class="col col-12 div-brd-grn" style="margin-right: 0px;">
+            <H2>Today Date : {{ formattedDate }}</H2>
+        </div>
+    </div>
+    <div class="horizontal-line"></div>
+    <div class="row">
+        <div class="col col-12 border-box-green ">
+            <div class="table-wrapper">
+                <!-- Desktop View: Material Table -->
+                <div class="table-container">
+                    <table mat-table [dataSource]="employees" class="mat-elevation-z8 desktop-table ">
+                        <!-- Employee Name Column -->
+                        <ng-container matColumnDef="name">
+                            <th mat-header-cell *matHeaderCellDef>Employee Name</th>
+                            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+                        </ng-container>
+                        <!-- Present -->
+                        <ng-container matColumnDef="present">
+                            <th mat-header-cell *matHeaderCellDef>Present</th>
+                            <td mat-cell *matCellDef="let element">
+                                <mat-checkbox [(ngModel)]="element.attendance.present"
+                                    (change)="onCheckboxChange(element, 'present')">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+                        <!-- Half Day -->
+                        <ng-container matColumnDef="halfDay">
+                            <th mat-header-cell *matHeaderCellDef>Half Day</th>
+                            <td mat-cell *matCellDef="let element">
+                                <mat-checkbox [(ngModel)]="element.attendance.halfDay"
+                                    (change)="onCheckboxChange(element, 'halfDay')">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+                        <!-- Full Day -->
+                        <ng-container matColumnDef="fullDay">
+                            <th mat-header-cell *matHeaderCellDef>Full Day</th>
+                            <td mat-cell *matCellDef="let element">
+                                <mat-checkbox [(ngModel)]="element.attendance.fullDay"
+                                    (change)="onCheckboxChange(element, 'fullDay')">
+                                </mat-checkbox>
+                            </td>
+                        </ng-container>
+
+                        <ng-container matColumnDef="action">
+                            <th mat-header-cell *matHeaderCellDef>Action</th>
+                            <td mat-cell *matCellDef="let element">
+                                <mat-icon class="small-icon" color="warn">view_list</mat-icon>
+                                <mat-icon class="small-icon" color="warn">edit</mat-icon>
+                                <mat-icon class="small-icon" color="warn">delete</mat-icon>
+                            </td>
+                        </ng-container>
+
+                        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                </div>
+                <!-- Mobile View: Mat Card for Each Employee -->
+                <div class="mobile-cards">
+                    @for (emp of employees; track $index) {
+                    <mat-card class="mobile-card">
+                        <mat-card-title>{{ emp.name }}</mat-card-title>
+                        <mat-card-content>
+                            <mat-checkbox [(ngModel)]="emp.attendance.present"
+                                (change)="onCheckboxChange(emp, 'present')">
+                                Present
+                            </mat-checkbox>
+                            <mat-checkbox [(ngModel)]="emp.attendance.halfDay"
+                                (change)="onCheckboxChange(emp, 'halfDay')">
+                                Half Day
+                            </mat-checkbox>
+                            <mat-checkbox [(ngModel)]="emp.attendance.fullDay"
+                                (change)="onCheckboxChange(emp, 'fullDay')">
+                                Full Day
+                            </mat-checkbox>
+                        </mat-card-content>
+                    </mat-card>
+                    }
+                </div>
+                <!-- <div class="row" style="justify-content: flex-end;">
+                    <div class="col col-4">
+                        Right aligned content
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="horizontal-line"></div>
+</div>

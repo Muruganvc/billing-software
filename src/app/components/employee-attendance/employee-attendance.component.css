@@ -1,0 +1,96 @@
+.table-wrapper {
+  width: 100%;
+}
+
+.desktop-table {
+  width: 100%;
+  display: table;
+}
+
+.mobile-cards {
+  display: none;
+  padding: 8px;
+}
+
+.mobile-card {
+  margin-bottom: 12px;
+}
+
+/* Show mobile cards, hide table on mobile */
+@media screen and (max-width: 768px) {
+  .desktop-table {
+    display: none !important;
+  }
+
+  .mobile-cards {
+    display: block !important;
+  }
+}
+
+ /* app.component.css */
+.table-container {
+  height: 100%; /* Fixed height */
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+}
+ 
+
+.small-icon {
+    font-size: 18px; /* or any desired size */
+    height: 18px;
+    width: 18px;
+    line-height: 18px;
+}
+
+.v-line {
+  width: 1px;
+  background-color: #ccc;
+}
+
+.border-box-green {
+  border-right: 2px solid green; /* red left border */
+  padding-right: 16px; /* optional spacing inside */
+}
+
+.border-box-red {
+  border-left: 2px solid #ff0000; /* red left border */
+  padding-left: 16px; /* optional spacing inside */
+}
+
+.horizontal-line {
+  height: 2px;
+  background-color: #333; /* line color */
+  width: 100%; /* full width */
+  margin: 20px 0;
+}
+
+.div-brd-grn {
+  text-align: center;
+  border: 2px solid green;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  padding: 4px 8px; /* smaller padding = smaller height */
+  height: 30px;     /* explicitly control height */
+  line-height: 30px; /* align text vertically */
+  overflow: hidden;  /* clip overflow if needed */
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.div-brd-red {
+  text-align: center;
+  border: 2px solid red;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  padding: 4px 8px; /* smaller padding = smaller height */
+  height: 30px;     /* explicitly control height */
+  line-height: 30px; /* align text vertically */
+  overflow: hidden;  /* clip overflow if needed */
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}

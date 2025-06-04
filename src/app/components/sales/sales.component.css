@@ -1,0 +1,30 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.col-10 {
+    flex: 0 0 83.3333%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.col-2 {
+    flex: 0 0 16.6667%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+@media(max-width : 768px) {
+    .col-10,
+    .col-2 {
+        flex: 0 0 100%;
+    }
+}
+
+.box {
+    background: #ddd;
+    /* padding: 5px; */
+    text-align: center;
+}
