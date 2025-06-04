@@ -5,13 +5,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatMenuModule } from '@angular/material/menu';
 import { SideNavComponent } from "./components/side-nav/side-nav.component";
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, SideNavComponent],
+  imports: [CommonModule, RouterOutlet,MatMenuModule, MatToolbarModule, MatIconModule, MatButtonModule, MatSidenavModule, SideNavComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -29,6 +30,14 @@ export class AppComponent implements OnInit {
         this.isMobile = result.matches;
       });
   }
+onSignIn() {
+  console.log('Sign In clicked');
+  // Add your sign-in logic here
+}
 
+onSignOut() {
+  console.log('Sign Out clicked');
+  // Add your sign-out logic here
+}
 }
 

@@ -16,10 +16,54 @@ mat-sidenav-container {
   height: calc(100vh - 64px);
 }
 
-mat-sidenav,mat-sidenav-content{
-transition: all 500ms ease-in-out;
+mat-sidenav,
+mat-sidenav-content {
+  transition: all 500ms ease-in-out;
 }
 
 .example-spacer {
   flex: 1 1 auto;
+}
+
+
+.app-toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button[mat-button] {
+  color: white;
+}
+
+
+.account-button {
+  background-color: #1976d2;
+  color: white;
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+.account-button:hover {
+  background-color: #1565c0;
+}
+
+.account-button {
+  display: flex;
+  align-items: center;
+  width: 150px;
+  justify-content: space-between;
+}
+
+.account-text {
+  flex-grow: 1;
+  margin-left: 8px;
 }

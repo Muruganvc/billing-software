@@ -1,8 +1,10 @@
+
  .employee-card {
-     padding: 16px;
-     /* max-width: 600px;
+  padding: 0 16px 16px 16px; /* top right bottom left */
+  /* max-width: 600px;
      margin: 24px auto; */
- }
+}
+
 
  .form-grid {
      display: grid;
@@ -35,4 +37,10 @@
   button {
     width: 100%; /* make button full width on mobile */
   }
+}
+.button-row {
+  display: flex;
+  justify-content: flex-end; /* push buttons to the right */
+  gap: 12px;                 /* space between buttons */
+  margin-bottom: 16px;       /* spacing below buttons */
 }

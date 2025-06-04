@@ -1,11 +1,31 @@
-<mat-toolbar class="mat-elevation-z3">
+<mat-toolbar class="mat-elevation-z3 app-toolbar">
   @if (!isMobile) {
   <button mat-icon-button (click)="collapsed.set(!collapsed())">
     <mat-icon>menu</mat-icon>
   </button>
   }
-  <span>My App</span>
+  <span>Vennila Electricals</span>
+  <span class="spacer"></span>
+<button mat-button class="account-button" [matMenuTriggerFor]="userMenu">
+  <mat-icon>account_circle</mat-icon>
+  <span class="account-text">Account</span>
+  <mat-icon class="arrow-icon">arrow_drop_down</mat-icon>
+</button>
+
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item (click)="onSignIn()">
+      <mat-icon>login</mat-icon>
+      <span>Sign In</span>
+    </button>
+    <button mat-menu-item (click)="onSignOut()">
+      <mat-icon>logout</mat-icon>
+      <span>Sign Out</span>
+    </button>
+
+  </mat-menu>
+
 </mat-toolbar>
+
 <mat-sidenav-container>
   <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
     <app-side-nav [collapsed]='collapsed()'></app-side-nav>

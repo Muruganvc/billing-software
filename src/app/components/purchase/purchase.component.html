@@ -1,29 +1,39 @@
 <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
   <mat-card class="employee-card">
-    <h2>Employee Details</h2>
-    
+    <div class="header-row">
+      <div class="button-row">
+        <button mat-raised-button color="primary" (click)="openProductDialog()" type="submit">
+          <mat-icon>
+            add
+          </mat-icon>
+          New Product
+        </button>
+      </div>
+    </div>
+
     <div class="form-grid">
-      <mat-form-field class="form-field" density="compact" class="form-field">
-        <mat-label>Name</mat-label>
+      <!-- Your form fields here -->
+      <mat-form-field class="form-field" density="compact">
+        <mat-label>Product Name</mat-label>
         <input matInput formControlName="name" />
       </mat-form-field>
-
-      <mat-form-field class="form-field" density="compact" class="form-field">
-        <mat-label>Email</mat-label>
+      <mat-form-field class="form-field" density="compact">
+        <mat-label>Product Company</mat-label>
         <input matInput formControlName="email" />
       </mat-form-field>
-
-      <mat-form-field class="form-field" density="compact" class="form-field">
-        <mat-label>Position</mat-label>
+      <mat-form-field class="form-field" density="compact">
+        <mat-label>Maximum retail price (MRP)</mat-label>
         <input matInput formControlName="position" />
       </mat-form-field>
-
-      <mat-form-field class="form-field" density="compact" class="form-field">
-        <mat-label>Department</mat-label>
+      <mat-form-field class="form-field" density="compact">
+        <mat-label>Purchase Price</mat-label>
+        <input matInput formControlName="position" />
+      </mat-form-field>
+      <mat-form-field class="form-field" density="compact">
+        <mat-label>Quantity</mat-label>
         <input matInput formControlName="department" />
       </mat-form-field>
     </div>
 
-    <button mat-raised-button color="primary" type="submit">Submit</button>
   </mat-card>
 </form>
