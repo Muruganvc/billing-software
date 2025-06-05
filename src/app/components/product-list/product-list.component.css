@@ -1,93 +1,210 @@
+ 
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.field-group {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+}
+
+/* Consistent label style */
+.form-label {
+    /* font-weight: 500; */
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+/* All inputs and mat-selects */
+.form-input {
+    height: 30px;
+    font-size: 14px;
+    padding: 0 8px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Responsive layout: side-by-side on desktop */
+@media (min-width: 768px) {
+    .field-group {
+        flex-direction: row;
+        align-items: start;
+        flex: 1 1 45%;
+    }
+
+    .form-label {
+        flex: 0 0 120px;
+        margin-bottom: 0;
+        padding-top: 6px;
+    }
+
+    .form-input {
+        flex: 1;
+    }
+}
+
+  
+.form-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-top-color: green;
+    border-bottom-color: red;
+    border-left-color: green;
+    border-right-color: red;
+}
+ 
+ 
+.btn-submit {
+    background-color: #4caf50; /* Green */
+    color: white;
+    height: 30px;       /* Set fixed height */
+    line-height: 30px;  /* Vertically center text */
+    padding: 0 16px;    /* Horizontal padding */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+ 
+@media (max-width: 770px) {
+    .btn-submit {
+        width: 100%; /* full width on mobile */
+        box-sizing: border-box; /* includes padding in width */
+    }
+}
+
+
 .container {
   padding: 16px;
 }
 
-/* Toolbar */
-.toolbar-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px;
+.filter-field {
+  width: 100%;
+  max-width: 100%;
   margin-bottom: 16px;
 }
 
+.table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 600px;
+}
+
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.mobile-card {
+  margin-bottom: 16px;
+}
+
+.table-container {
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
 .filter-field {
-  flex: 1 1 250px;
+  flex: 1;
   min-width: 200px;
 }
 
-button {
+.new-button {
+  width: 48px;
+  height: 48px;
   white-space: nowrap;
 }
 
-/* Table container */
-.table-wrapper {
-  width: 100%;
-}
-
-/* Table styles visible only on desktop */
-.desktop-table {
-  width: 100%;
-}
-
-.mobile-cards {
-  display: none;
-}
-
-/* Mobile-specific styles */
 @media (max-width: 768px) {
-  .desktop-table {
-    display: none;
+  .new-button {
+    width: 100% !important;
+    height: auto;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 8px;
   }
 
-  .mobile-cards {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .product-card {
-    width: 100%;
-  }
-
-  .toolbar-row {
+  .toolbar {
     flex-direction: column;
     align-items: stretch;
+    gap: 8px;
   }
 
-  .filter-field,
-  button {
-    width: 100%;
-  }
-}
-
-/* Override default appearance for mat-form-field in mobile */
-@media (max-width: 768px) {
   .filter-field {
-    width: 100%;
+    min-width: 100% !important;
+    flex: unset !important;
   }
 
-  .filter-field .mat-form-field-wrapper {
-    padding-bottom: 0 !important; /* reduce extra space */
+  .new-button {
+    width: 48px;
+    height: 48px;
+    align-self: flex-start;
   }
 
-  .filter-field .mat-form-field-infix {
-    padding: 8px 0 !important; /* reduce top/bottom padding */
+  .table-wrapper,
+  .table-container {
+    max-height: 300px;
+    overflow-x: auto;
+    overflow-y: auto;
   }
 
-  .filter-field input.mat-input-element {
-    height: 36px !important;
-    line-height: 36px !important;
-    font-size: 14px;
+  table {
+    min-width: 100% !important;
+    width: 100% !important;
+    font-size: 12px;
   }
 
-  .toolbar-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 8px; /* tighter spacing for compact layout */
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 4px 8px;
   }
 
-  button {
-    height: 40px;
+  .action-buttons button {
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
   }
+
+  .action-buttons {
+    gap: 4px;
+  }
+
 }
