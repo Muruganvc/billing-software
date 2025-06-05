@@ -1,34 +1,75 @@
+<div class="container">
+  <div class="toolbar">
+    <mat-form-field class="filter-field">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Product Item(s)" />
+    </mat-form-field>
 
-<div class="mat-elevation-z8 responsive-table-container">
-  <table mat-table [dataSource]="dataSource">
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef> No. </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-    </ng-container>
+    <div class="header-row">
+      <div class="button-row">
+        <button mat-raised-button color="primary" (click)="onNewClick()" type="submit">
+          <mat-icon>
+            add
+          </mat-icon>
+          New Product
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Desktop Table -->
+  <ng-container *ngIf="!isMobile">
+    <div class="table-wrapper table-container">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+          <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+        </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <th mat-header-cell *matHeaderCellDef> Weight </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-    </ng-container>
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+          <td mat-cell *matCellDef="let element"> {{ element.title }} </td>
+        </ng-container>
 
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <th mat-header-cell *matHeaderCellDef> Symbol </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-    </ng-container>
+        <ng-container matColumnDef="body">
+          <th mat-header-cell *matHeaderCellDef> Description </th>
+          <td mat-cell *matCellDef="let element"> {{ element.body }} </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-   
+        <ng-container matColumnDef="userId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> User </th>
+          <td mat-cell *matCellDef="let element"> {{ element.userId }} </td>
+        </ng-container>
 
-  </table>
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon class="small-icon" color="warn">edit</mat-icon>
+            <mat-icon class="small-icon" color="warn">delete</mat-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+  </ng-container>
+
+  <!-- Mobile Cards -->
+  <ng-container *ngIf="isMobile">
+    <mat-card *ngFor="let element of dataSource.filteredData" class="mobile-card">
+      <mat-card-title>{{ element.title }}</mat-card-title>
+      <mat-card-content>
+        <p><strong>ID:</strong> {{ element.id }}</p>
+        <p><strong>Description:</strong> {{ element.body }}</p>
+        <p><strong>User:</strong> {{ element.userId }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
 </div>
-

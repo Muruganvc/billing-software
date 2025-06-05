@@ -1,9 +1,134 @@
-.responsive-table-container {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+.container {
+  padding: 16px;
+}
+
+.filter-field {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 16px;
+}
+
+.table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 table {
   width: 100%;
-  min-width: 600px; /* or whatever total width your table needs */
+  min-width: 600px;
+}
+
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.mobile-card {
+  margin-bottom: 16px;
+}
+
+.table-container {
+  max-height: 350px; 
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.filter-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.new-button {
+  white-space: nowrap;
+  height: 56px;  
+}
+ 
+/* Base container padding is fine */
+
+/* Existing styles... */
+
+@media (max-width: 768px) {
+  /* Make container padding smaller on mobile */
+  .container {
+    padding: 8px;
+  }
+
+  /* Toolbar stacks vertically */
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  /* Filter field full width */
+  .filter-field {
+    min-width: 100% !important;
+    flex: unset !important;
+  }
+
+  /* New button full width or auto width and smaller height */
+  .new-button {
+    width: 48px;
+    height: 48px;
+    align-self: flex-start;
+  }
+
+  /* Table wrapper: allow horizontal scroll, smaller min-width */
+  .table-wrapper,
+  .table-container {
+    max-height: 300px; /* can reduce height a bit */
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  table {
+    min-width: 100% !important; /* allow table to shrink */
+    width: 100% !important;
+    font-size: 12px; /* smaller font on mobile */
+  }
+
+  /* Optional: reduce padding inside table cells */
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 4px 8px;
+  }
+
+  /* Action buttons smaller */
+  .action-buttons button {
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+  }
+
+  /* Optional: stack action buttons vertically */
+  .action-buttons {
+    gap: 4px;
+  }
+
+  /* If you want, hide less important columns on mobile */
+  /* Example: hide the description/body column */
+  /* 
+  td.mat-cell:nth-child(3),
+  th.mat-header-cell:nth-child(3) {
+    display: none;
+  }
+  */
 }
