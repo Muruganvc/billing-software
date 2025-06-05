@@ -1,0 +1,109 @@
+.form-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 16px;
+    /* flex: st; */
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.field-group {
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: column;
+}
+
+/* Consistent label style */
+.form-label {
+    /* font-weight: 500; */
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+/* All inputs and mat-selects */
+.form-input {
+    height: 30px;
+    font-size: 14px;
+    padding: 0 8px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* Responsive layout: side-by-side on desktop */
+@media (min-width: 768px) {
+    .field-group {
+        flex-direction: row;
+        align-items: start;
+        flex: 1 1 45%;
+    }
+
+    .form-label {
+        flex: 0 0 120px;
+        margin-bottom: 0;
+        padding-top: 6px;
+    }
+
+    .form-input {
+        flex: 1;
+    }
+}
+
+/* Angular Material mat-select styling */
+::ng-deep .mat-select {
+    height: 30px !important;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    padding: 0 !important;
+}
+
+::ng-deep .mat-select-trigger {
+    height: 30px !important;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+}
+
+::ng-deep .mat-option {
+    height: 30px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.form-input {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+    border-top-color: green;
+    border-bottom-color: red;
+    border-left-color: green;
+    border-right-color: red;
+}
+.btn-back {
+    background-color: #ffc107;
+    /* Amber for Back */
+    color: black;
+}
+
+.btn-clear {
+    background-color: #f44336;
+    /* Red for Clear */
+    color: white;
+}
+
+.btn-submit {
+    background-color: #4caf50;
+    /* Green for Submit */
+    color: white;
+}

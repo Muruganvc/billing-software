@@ -13,13 +13,13 @@ import { BreakpointObserver, Breakpoints, LayoutModule } from '@angular/cdk/layo
 import { MatTableDataSource } from '@angular/material/table';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 export interface Post {
   id: number;
   title: string;
   body: string;
   userId: number;
 }
-
 
 @Component({
   selector: 'app-sales',
@@ -35,7 +35,7 @@ export interface Post {
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    FormsModule
+    FormsModule,RouterModule
   ],
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css'
@@ -43,7 +43,7 @@ export interface Post {
 export class SalesComponent {
    isMobile = false;
 
-  displayedColumns: string[] = ['id', 'title', 'body', 'userId', 'actions'];
+  displayedColumns: string[] = ['id', 'productName', 'productCompany', 'mrp', 'purchasePrice','quantity','actions'];
   dataSource = new MatTableDataSource<any>([
     {
       id: 1,
@@ -64,77 +64,47 @@ export class SalesComponent {
       userId: 103
     },
     {
-      id: 1,
+      id: 4,
       title: 'Title One',
       body: 'This is the description for item one.',
       userId: 101
     },
     {
-      id: 2,
+      id: 5,
       title: 'Title Two',
       body: 'This is the description for item two.',
       userId: 102
     },
     {
-      id: 3,
+      id: 6,
       title: 'Title Three',
       body: 'This is the description for item three.',
       userId: 103
     },
     {
-      id: 1,
+      id: 7,
       title: 'Title One',
       body: 'This is the description for item one.',
       userId: 101
     },
     {
-      id: 2,
+      id: 8,
       title: 'Title Two',
       body: 'This is the description for item two.',
       userId: 102
     },
     {
-      id: 3,
+      id: 9,
       title: 'Title Three',
       body: 'This is the description for item three.',
       userId: 103
     },
     {
-      id: 1,
+      id: 10,
       title: 'Title One',
       body: 'This is the description for item one.',
       userId: 101
-    },
-    {
-      id: 2,
-      title: 'Title Two',
-      body: 'This is the description for item two.',
-      userId: 102
-    },
-    {
-      id: 3,
-      title: 'Title Three',
-      body: 'This is the description for item three.',
-      userId: 103
-    },
-    {
-      id: 1,
-      title: 'Title One',
-      body: 'This is the description for item one.',
-      userId: 101
-    },
-    {
-      id: 2,
-      title: 'Title Two',
-      body: 'This is the description for item two.',
-      userId: 102
-    },
-    {
-      id: 3,
-      title: 'Title Three',
-      body: 'This is the description for item three.',
-      userId: 103
-    },
+    }
   ]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

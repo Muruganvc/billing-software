@@ -1,0 +1,80 @@
+<div class="container">
+  <!-- Toolbar with Filter and Button -->
+  <div class="toolbar-row">
+    <mat-form-field class="filter-field" appearance="outline">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Product Item(s)" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onNewClick()">
+      <mat-icon>add</mat-icon>
+      New Product
+    </button>
+  </div>
+
+  <!-- Table for Desktop, Card for Mobile -->
+  <div class="table-wrapper">
+    <!-- Table view (desktop) -->
+    <table mat-table [dataSource]="dataSource.filteredData" class="mat-elevation-z8 desktop-table">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="productName">
+        <th mat-header-cell *matHeaderCellDef> Product Name </th>
+        <td mat-cell *matCellDef="let element"> {{ element.title }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="productCompany">
+        <th mat-header-cell *matHeaderCellDef> Product Company </th>
+        <td mat-cell *matCellDef="let element"> {{ element.body }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="mrp">
+        <th mat-header-cell *matHeaderCellDef> MRP </th>
+        <td mat-cell *matCellDef="let element"> {{ element.userId }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="purchasePrice">
+        <th mat-header-cell *matHeaderCellDef> Purchase Price </th>
+        <td mat-cell *matCellDef="let element"> {{ element.userId }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{ element.userId }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon color="warn">edit</mat-icon>
+          <mat-icon color="warn">delete</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Card view (mobile) -->
+    <div class="mobile-cards">
+      <mat-card *ngFor="let element of dataSource.filteredData" class="product-card">
+        <mat-card-content>
+          <p><strong>No:</strong> {{ element.id }}</p>
+          <p><strong>Product Name:</strong> {{ element.title }}</p>
+          <p><strong>Product Company:</strong> {{ element.body }}</p>
+          <p><strong>MRP:</strong> {{ element.userId }}</p>
+          <p><strong>Purchase Price:</strong> {{ element.userId }}</p>
+          <p><strong>Quantity:</strong> {{ element.userId }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

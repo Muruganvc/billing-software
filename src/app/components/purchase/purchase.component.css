@@ -1,46 +1,126 @@
-
- .employee-card {
-  padding: 0 16px 16px 16px; /* top right bottom left */
-  /* max-width: 600px;
-     margin: 24px auto; */
+.container {
+  padding: 16px;
 }
 
-
- .form-grid {
-     display: grid;
-     grid-template-columns: 1fr 1fr;
-     gap: 16px;
- }
-
-
- button {
-     margin-top: 24px;
- }
-    
-
- /* Responsive: single column on small screens */
- @media (max-width: 600px) {
-     .form-grid {
-         grid-template-columns: 1fr;
-     }
- }
- 
- @media (max-width: 600px) {
-  .employee-card {
-    padding: 12px;
-  }
-
-  .form-field .mat-input-element {
-    font-size: 0.9rem;
-  }
-
-  button {
-    width: 100%; /* make button full width on mobile */
-  }
+.filter-field {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 16px;
 }
-.button-row {
+
+.table-wrapper {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 600px;
+}
+
+.mat-header-row {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 2;
+}
+
+.action-buttons {
   display: flex;
-  justify-content: flex-end; /* push buttons to the right */
-  gap: 12px;                 /* space between buttons */
-  margin-bottom: 16px;       /* spacing below buttons */
+  gap: 8px;
+  justify-content: flex-end;
 }
+
+.mobile-card {
+  margin-bottom: 16px;
+}
+
+.table-container {
+  max-height: 350px;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.filter-field {
+  flex: 1;
+  min-width: 200px;
+}
+
+.new-button {
+  width: 48px;
+  height: 48px;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .new-button {
+    width: 100% !important;
+    height: auto;
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .container {
+    padding: 8px;
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .filter-field {
+    min-width: 100% !important;
+    flex: unset !important;
+  }
+
+  .new-button {
+    width: 48px;
+    height: 48px;
+    align-self: flex-start;
+  }
+
+  .table-wrapper,
+  .table-container {
+    max-height: 300px;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  table {
+    min-width: 100% !important;
+    width: 100% !important;
+    font-size: 12px;
+  }
+
+  th.mat-header-cell,
+  td.mat-cell {
+    padding: 4px 8px;
+  }
+
+  .action-buttons button {
+    min-width: 32px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+  }
+
+  .action-buttons {
+    gap: 4px;
+  }
+
+}
+
+ 

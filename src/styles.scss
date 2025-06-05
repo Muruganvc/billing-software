@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 // @use '@angular/material' as mat;
-// @include mat.core();
+// // @include mat.core();
+// @include mat.form-field-outlined($min-container-height:60px);
 
 html,
 body {
@@ -120,8 +121,50 @@ body {
 }
 
 .small-icon {
-    font-size: 18px; /* or any desired size */
+    font-size: 18px;
+    /* or any desired size */
     height: 18px;
     width: 18px;
     line-height: 18px;
+}
+
+
+mat-form-field {
+    --mat-form-field-container-height: 30px;
+    --mat-form-field-container-vertical-padding: 5px;
+    height: 30px;
+    font-size: 12px;
+    width: 100%;
+    max-width: 300px;
+}
+
+
+
+::ng-deep .mat-form-field {
+  --mat-form-field-container-height: 30px;
+  --mat-form-field-container-vertical-padding: 0px;
+  font-size: 12px;
+  height: 30px;
+  line-height: 30px;
+  max-width: 300px;
+}
+
+::ng-deep .mat-form-field-infix {
+  padding: 0 !important;
+  height: 30px !important;
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep .mat-select {
+  padding: 0 !important;
+  height: 30px !important;
+  line-height: 30px;
+  font-size: 12px;
+}
+
+::ng-deep .mat-select-trigger {
+  height: 30px;
+  display: flex;
+  align-items: center;
 }

@@ -1,8 +1,13 @@
-<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-  <mat-card class="employee-card">
+<div class="container">
+  <div class="toolbar">
+    <mat-form-field class="filter-field small">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Product Item(s)" />
+    </mat-form-field>
+
     <div class="header-row">
       <div class="button-row">
-        <button mat-raised-button color="primary" (click)="openProductDialog()" type="submit">
+        <button mat-raised-button color="primary" (click)="onNewClick()" type="submit">
           <mat-icon>
             add
           </mat-icon>
@@ -10,30 +15,72 @@
         </button>
       </div>
     </div>
+  </div>
+  <!-- Desktop Table -->
+  <ng-container *ngIf="!isMobile">
+    <div class="table-wrapper table-container">
+      <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-    <div class="form-grid">
-      <!-- Your form fields here -->
-      <mat-form-field class="form-field" density="compact">
-        <mat-label>Product Name</mat-label>
-        <input matInput formControlName="name" />
-      </mat-form-field>
-      <mat-form-field class="form-field" density="compact">
-        <mat-label>Product Company</mat-label>
-        <input matInput formControlName="email" />
-      </mat-form-field>
-      <mat-form-field class="form-field" density="compact">
-        <mat-label>Maximum retail price (MRP)</mat-label>
-        <input matInput formControlName="position" />
-      </mat-form-field>
-      <mat-form-field class="form-field" density="compact">
-        <mat-label>Purchase Price</mat-label>
-        <input matInput formControlName="position" />
-      </mat-form-field>
-      <mat-form-field class="form-field" density="compact">
-        <mat-label>Quantity</mat-label>
-        <input matInput formControlName="department" />
-      </mat-form-field>
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+          <td mat-cell *matCellDef="let element"> {{ element.id }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="productName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
+          <td mat-cell *matCellDef="let element"> {{ element.title }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="productCompany">
+          <th mat-header-cell *matHeaderCellDef> Product Company </th>
+          <td mat-cell *matCellDef="let element"> {{ element.body }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="mrp">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Maximum retail price (MRP) </th>
+          <td mat-cell *matCellDef="let element"> {{ element.userId }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="purchasePrice">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Purchase Price </th>
+          <td mat-cell *matCellDef="let element"> {{ element.userId }} </td>
+        </ng-container>
+        <ng-container matColumnDef="quantity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+          <td mat-cell *matCellDef="let element"> {{ element.userId }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon class="small-icon" color="warn">edit</mat-icon>
+            <mat-icon class="small-icon" color="warn">delete</mat-icon>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
     </div>
 
-  </mat-card>
-</form>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+  </ng-container>
+
+  <!-- Mobile Cards -->
+  <ng-container *ngIf="isMobile">
+    <mat-card *ngFor="let element of dataSource.filteredData" class="mobile-card">
+      <mat-card-title>{{ element.title }}</mat-card-title>
+      <mat-card-content>
+        <p><strong>ID:</strong> {{ element.id }}</p>
+        <p><strong>Description:</strong> {{ element.body }}</p>
+        <p><strong>User:</strong> {{ element.userId }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-icon-button color="primary"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="warn"><mat-icon>delete</mat-icon></button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+</div>
+
+<router-outlet></router-outlet>

@@ -35,9 +35,14 @@ export class SideNavComponent {
       route: 'dashboard'
     },
     {
-      icon:'date_range',
-      label:'Employee Attendance',
-      route:'emp-attendance'
+      icon: 'date_range',
+      label: 'Employee Attendance',
+      route: 'emp-attendance'
+    },
+    {
+      icon: 'date_range',
+      label: 'Product',
+      route: 'products'
     },
     {
       icon: 'face',

@@ -1,0 +1,69 @@
+<mat-card class="form-card" style="text-align: left; max-width: 100%; height: auto; margin: auto;">
+    <mat-card-header>
+        <mat-card-title>Product Details</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <form [formGroup]="form" class="form-container">
+            <!-- First & Last Name Row -->
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="productName" class="form-label">Product Name</label>
+                    <input id="productName" type="text" formControlName="productName" class="form-input" />
+                </div>
+
+                <div class="field-group">
+                    <label for="productCompany" class="form-label">Product Company</label>
+                    <input id="productCompany" type="text" formControlName="productCompany" class="form-input" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="maximumRetailPrice" class="form-label">Max.Retail Price</label>
+                    <input id="maximumRetailPrice" type="text" formControlName="maximumRetailPrice"
+                        class="form-input" />
+                </div>
+
+                <div class="field-group">
+                    <label for="purchasePrice" class="form-label">Purchase Price</label>
+                    <input id="purchasePrice" type="text" formControlName="purchasePrice" class="form-input" />
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input id="quantity" type="text" formControlName="quantity" class="form-input" />
+                </div>
+
+                <div class="field-group">
+                    <label for="availQuantity" class="form-label">Total Quantity</label>
+                    <input id="availQuantity" type="text" formControlName="availQuantity" class="form-input" />
+                </div>
+            </div>
+
+            <!-- Gender Row -->
+            <div class="form-row">
+                <div class="field-group">
+                    <label for="gender" class="form-label">Gender</label>
+                    <mat-select id="gender" formControlName="gender" class="form-input">
+                        <mat-option value="male">Male</mat-option>
+                        <mat-option value="female">Female</mat-option>
+                        <mat-option value="other">Other</mat-option>
+                    </mat-select>
+                </div>
+            </div>
+        </form>
+    </mat-card-content>
+    <mat-card-actions style="padding: 5px; display: flex; justify-content: flex-end; gap: 10px;">
+        <button mat-raised-button class="btn-back" (click)="back()">
+            <mat-icon>backspace</mat-icon>
+            Back</button>
+        <button mat-raised-button class="btn-clear" (click)="onSubmit()">
+            <mat-icon>clear</mat-icon>
+            Clear</button>
+        <button mat-raised-button class="btn-submit" (click)="onSubmit()">
+            <mat-icon>save</mat-icon>Submit</button>
+    </mat-card-actions>
+</mat-card>

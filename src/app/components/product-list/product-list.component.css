@@ -1,0 +1,93 @@
+.container {
+  padding: 16px;
+}
+
+/* Toolbar */
+.toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.filter-field {
+  flex: 1 1 250px;
+  min-width: 200px;
+}
+
+button {
+  white-space: nowrap;
+}
+
+/* Table container */
+.table-wrapper {
+  width: 100%;
+}
+
+/* Table styles visible only on desktop */
+.desktop-table {
+  width: 100%;
+}
+
+.mobile-cards {
+  display: none;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .desktop-table {
+    display: none;
+  }
+
+  .mobile-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .product-card {
+    width: 100%;
+  }
+
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-field,
+  button {
+    width: 100%;
+  }
+}
+
+/* Override default appearance for mat-form-field in mobile */
+@media (max-width: 768px) {
+  .filter-field {
+    width: 100%;
+  }
+
+  .filter-field .mat-form-field-wrapper {
+    padding-bottom: 0 !important; /* reduce extra space */
+  }
+
+  .filter-field .mat-form-field-infix {
+    padding: 8px 0 !important; /* reduce top/bottom padding */
+  }
+
+  .filter-field input.mat-input-element {
+    height: 36px !important;
+    line-height: 36px !important;
+    font-size: 14px;
+  }
+
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px; /* tighter spacing for compact layout */
+  }
+
+  button {
+    height: 40px;
+  }
+}
